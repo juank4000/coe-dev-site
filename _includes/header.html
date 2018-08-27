@@ -1,0 +1,50 @@
+
+   <!-- ***** Header Area Start ***** -->
+
+  {%- assign default_paths = site.pages | map: "path" -%}
+  {%- assign page_paths = site.header_pages | default: default_paths -%}
+   <header class="header-area sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {%- if page_paths -%}
+                <nav class="navbar navbar-expand-lg">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="{{ "/" | relative_url }}"><img src="/coe-site/img/core-img/logo.png" alt="Logo" width="120px;"></a>
+                    <!-- Navbar Toggler -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <!-- Navbar -->
+                    <div class="collapse navbar-collapse" id="worldNav">
+                        <ul class="navbar-nav ml-auto">
+
+
+                            {%- for path in page_paths -%}
+                              {%- assign my_page = site.pages | where: "path", path | first -%}
+                              {%- if my_page.title -%}
+                                {% assign active = '' %}
+                                {% if my_page.url == page.url %}
+                                    {% assign active = 'active' %}
+                                {% endif %}
+                              <li class="nav-item {{ active }}">
+                                  <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }} <span class="sr-only">(current)</span></a>
+                              </li>
+                              {%- endif -%}
+                            {%- endfor -%}
+
+                        </ul>
+                        <!-- Search Form  -->
+                        <div id="search-wrapper">
+                            <form action="#">
+                                <input type="text" id="search" placeholder="Search something...">
+                                <div id="close-icon"></div>
+                                <input class="d-none" type="submit" value="">
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->

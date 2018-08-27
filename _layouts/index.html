@@ -1,0 +1,272 @@
+---
+layout: default_coe
+---
+
+    <div class="main-content-wrapper section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- ============= Post Content Area Start ============= -->
+                <div class="col-12 col-lg-8">
+                    <div class="post-content-area mb-50">
+                        <!-- Catagory Area -->
+                        <div class="world-catagory-area">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="title">Categorías</li>
+
+
+                                {% for category in site.categories %}
+                                    {% capture category_name %}{{ category | first }}{% endcapture %}
+
+
+                                      {% assign active = '' %}
+                                      {% if forloop.index == 1 %}
+                                          {% assign active = 'active' %}
+                                      {% endif %}
+                                    
+                                    <li class="nav-item">
+                                            <a class="nav-link {{ active}}" id="tab{{ forloop.index }}" data-toggle="tab" href="#world-tab-{{ forloop.index }}" role="tab" aria-controls="world-tab-{{ forloop.index }}" aria-selected="true">{{ category_name }}</a>
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+
+
+                                {% for category in site.categories %}
+                                    {% capture category_name %}{{ category | first }}{% endcapture %}
+                                    {% assign index_parent = forloop.index %}
+
+                                    {% assign show_active = '' %}
+                                    {% if forloop.index == 1 %}
+                                        {% assign show_active = 'show active' %}
+                                    {% endif %}
+                                    
+
+
+                                <div class="tab-pane fade {{ show_active }}" id="world-tab-{{ forloop.index }}" role="tabpanel" aria-labelledby="tab{{ forloop.index }}">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+
+                                            {% if forloop.index == 1 %}
+                                               <div class="world-catagory-slider owl-carousel wow fadeInUpBig" data-wow-delay="0.1s">
+                                            {% endif %}
+                                            
+
+
+                                               {% for post in site.categories[category_name] %}
+
+                                                    <!-- Single Blog Post -->
+                                                    <div class="single-blog-post">
+                                                        <!-- Post Thumbnail -->
+                                                        <div class="post-thumbnail">
+                                                            <img src="/coe-site/img/blog-img/b1.jpg" alt="">
+                                                        </div>
+                                                        <!-- Post Content -->
+                                                        <div class="post-content">
+                                                            <a href="{{ site.baseurl }}{{ post.url }}" class="headline">
+                                                                <h5>{{post.title}}</h5>
+                                                            </a>
+                                                            <p>{{post.title}}...</p>
+                                                            <!-- Post Meta -->
+                                                            <div class="post-meta">
+                                                                <p><a href="#" class="post-author"><i class="fa fa-tag"></i> Tags: {{ post | tags }}</a> | <a href="#" class="post-date">{{ post.date | date_to_string }}</a></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% if index_parent > 1 %}
+                                                        {% break %}
+                                                    {% endif %}
+
+
+
+                                                {% endfor %}
+
+                                             {% if forloop.index == 1 %}
+                                                </div>
+                                             {% endif %}
+                                            
+
+
+                                            <br/>
+                                            <a href="/categorias/">Ver todo el contenido de {{ category_name }} ></a>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+
+                                           
+                                            {% for post in site.categories[category_name] %}
+                                                <!-- Single Blog Post -->
+                                                <div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.1s">
+                                                    <!-- Post Thumbnail -->
+                                                    <div class="post-thumbnail">
+                                                        <img src="/coe-site/img/blog-img/b11.jpg" alt="">
+                                                    </div>
+                                                    <!-- Post Content -->
+                                                    <div class="post-content">
+                                                            <a href="{{ site.baseurl }}{{ post.url }}" class="headline">
+                                                                    <h5>{{post.title}}</h5>
+                                                                </a>
+                                                            <!-- Post Meta -->
+                                                            <div class="post-meta">
+                                                                    <p><a href="#" class="post-author"><i class="fa fa-tag"></i> Tags: {{ post | tags }}</a> | <a href="#" class="post-date">{{ post.date | date_to_string }}</a></p>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                {% if forloop.index > 4 %}
+                                                    {% break %}
+                                                {% endif %}
+                                            {% endfor %}
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+
+
+                        <!-- Catagory Area -->
+                        <div class="world-catagory-area mt-50">
+                            <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                                <li class="title">Aportes de Contenido</li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tab10" data-toggle="tab" href="#world-tab-10" role="tab" aria-controls="world-tab-10" aria-selected="true">Formularios</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent2">
+
+                                <div class="tab-pane fade show active" id="world-tab-10" role="tabpanel" aria-labelledby="tab10">
+                                    <div class="row">
+
+                                        <div class="col-12 col-md-6">
+                                            <!-- Single Blog Post -->
+                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                                                <!-- Post Thumbnail -->
+                                                <div class="post-thumbnail">
+                                                    <img src="/coe-site/img/blog-img/b2.jpg" alt="">
+                                                    <!-- Catagory -->
+                                                    <div class="post-cta"><a href="#">Formulario</a></div>
+                                                </div>
+                                                <!-- Post Content -->
+                                                <div class="post-content">
+                                                    <a href="#" class="headline">
+                                                        <h5>Formulario de aporte de contenido</h5>
+                                                    </a>
+                                                    <p>En esta sección podrás enviarnos tus aportes de contenido...</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+                                            <!-- Single Blog Post -->
+                                            <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.3s">
+                                                <!-- Post Thumbnail -->
+                                                <div class="post-thumbnail">
+                                                    <img src="/coe-site/img/blog-img/b3.jpg" alt="">
+                                                    <!-- Catagory -->
+                                                    <div class="post-cta"><a href="#">Formulario</a></div>
+                                                </div>
+                                                <!-- Post Content -->
+                                                <div class="post-content">
+                                                    <a href="#" class="headline">
+                                                        <h5>Formulario de preguntas</h5>
+                                                    </a>
+                                                    <p>Aquí podrás realizar las consultas que necesites resolver, de manera que la comunidad Tinet pueda ayudarte...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ========== Sidebar Area ========== -->
+                <div class="col-12 col-md-8 col-lg-4">
+                    <div class="post-sidebar-area wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Widget Area -->
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Acerca de CoE</h5>
+                            <div class="widget-content">
+                                <p>The mango is perfect in that it is always yellow and if it’s not, I don’t want to hear about it. The mango’s only flaw, and it’s a minor one, is the effort it sometimes takes to undress the mango, carve it up in a way that makes sense, and find its way to the mouth.</p>
+                            </div>
+                        </div>
+                        <!-- Widget Area -->
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Novedades</h5>
+                            <div class="widget-content">
+
+                                
+                                    
+
+                                    {% for post in site.posts %}
+                                        <!-- Single Blog Post -->
+                                        <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
+                                            <!-- Post Thumbnail -->
+                                            <div class="post-thumbnail">
+                                                <img src="/coe-site/img/blog-img/b10.jpg" alt="">
+                                            </div>
+                                            <!-- Post Content -->
+                                            <div class="post-content">
+                                                <a href="{{ post.url }}" class="headline">
+                                                    <h5 class="mb-0">{{ post.title }}</h5>
+                                                    
+                                                    <a href="#" class="post-author">{{ post.categories[0] }}</a> | <a href="#" class="post-date">{{ post.date  | date_to_string }}</a>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% if forloop.index > 4 %}
+                                            {% break %}
+                                        {% endif %}
+                                   {% endfor %}
+                                
+
+                            </div>
+                        </div>
+
+                        <!-- Widget Area -->
+                        <div class="sidebar-widget-area">
+                            <h5 class="title">Imágen del Día</h5>
+                            <div class="widget-content">
+                                <!-- Single Blog Post -->
+                                <div class="single-blog-post todays-pick">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="/coe-site/img/blog-img/1028605.jpg" alt="">
+                                    </div>
+                                    <!-- Post Content 
+                                    <div class="post-content px-0 pb-0">
+                                        <a href="#" class="headline">
+                                            <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                        </a>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+

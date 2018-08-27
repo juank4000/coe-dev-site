@@ -1,0 +1,182 @@
+---
+layout: default_coe
+---
+
+    <!-- ********** Hero Area Start ********** -->
+    <div class="hero-area height-600 bg-img background-overlay" style="background-image: url(/coe-site/img/blog-img/bg2.jpg);">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center justify-content-center">
+              <div class="col-12 col-md-8 col-lg-6">
+                  <div class="single-blog-title text-center">
+                      <!-- Catagory -->
+                      <h3>{{ page.title }}</h3>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- ********** Hero Area End ********** -->
+
+  <div class="main-content-wrapper section-padding-100">
+      <div class="container">
+          <div class="row justify-content-center">
+              <!-- ============= Post Content Area ============= -->
+              <div class="col-12 col-lg-8">
+                  <div class="single-blog-content mb-100">
+                      <!-- Post Meta -->
+                      <div class="post-meta">
+                          <p>Publicado por <a href="#" class="post-author"></a>{{ page.author }}</a> el <a href="#" class="post-date">{{ page.date | date_to_string }}</a></p>
+                      </div>
+                      <!-- Post Content -->
+                      <div class="post-content">
+                          <h1>{{ page.title }}</h1>
+                          <br/>
+
+                          {{ content }}
+                          <!-- Post Tags -->
+                          <ul class="post-tags">
+                          {% for tag in page.tags %}
+                            {% if tag != "" %}
+                                <li><a href="#">{{tag}}</a></li>
+                            {% endif %}
+                          {% endfor %}
+
+                          </ul>
+                          <!-- Post Meta -->
+                          <div class="post-meta second-part">
+                              <p><a href="#" class="post-author"></a>{{ page.author }}</a> / <a href="#" class="post-date">{{ page.date | date_to_string }}</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- ========== Sidebar Area ========== -->
+              <div class="col-12 col-md-8 col-lg-4">
+                  <div class="post-sidebar-area">
+
+                      <!-- Widget Area -->
+                      <div class="sidebar-widget-area">
+                          <h5 class="title">Contenido Relacionado</h5>
+                          <div class="widget-content">
+                                {% capture page_categorie %}{{ page.categories }}{% endcapture %}
+
+                                {% for post_aux in site.categories[page_categorie] %}
+
+
+                              <!-- Single Blog Post -->
+                              <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="/coe-site/img/blog-img/b11.jpg" alt="">
+                                    </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="#" class="headline">
+                                            <h5 class="mb-0">{{post_aux.title}}</h5>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                {% if forloop.index > 4 %}
+                                    {% break %}
+                                {% endif %}
+                                {% endfor %}
+
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-12 col-lg-8">
+                  <div class="post-a-comment-area mt-70">
+                      <h5>Comentarios</h5>
+                      <!-- Contact Form -->
+                      <form action="https://api.staticman.net/v2/entry/juank4000/coe-dev-site/comentarios" method="post">
+                          <div class="row">
+                              <div class="col-12 col-md-6">
+                                  <div class="group">
+                                      <input type="text" name="fields[name]" id="name" required>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Enter your name</label>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-md-6">
+                                  <div class="group">
+                                      <input type="email" name="fields[email]" id="email" required>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Enter your email</label>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="group">
+                                      <textarea name="fields[message]" id="message" required></textarea>
+                                      <span class="highlight"></span>
+                                      <span class="bar"></span>
+                                      <label>Enter your comment</label>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <button type="submit" class="btn world-btn">Enviar comentario</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+              <div class="col-12 col-lg-8">
+                  <!-- Comment Area Start -->
+                  <div class="comment_area clearfix mt-70">
+                      <ol>
+                          <!-- Single Comment Area -->
+                          <li class="single_comment_area">
+                              <!-- Comment Content -->
+                              <div class="comment-content">
+                                  <!-- Comment Meta -->
+                                  <div class="comment-meta d-flex align-items-center justify-content-between">
+                                      <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                      <a href="#" class="comment-reply btn world-btn">Reply</a>
+                                  </div>
+                                  <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
+                              </div>
+                              <ol class="children">
+                                  <li class="single_comment_area">
+                                      <!-- Comment Content -->
+                                      <div class="comment-content">
+                                          <!-- Comment Meta -->
+                                          <div class="comment-meta d-flex align-items-center justify-content-between">
+                                              <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                              <a href="#" class="comment-reply btn world-btn">Reply</a>
+                                          </div>
+                                          <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
+                                      </div>
+                                  </li>
+                              </ol>
+                          </li>
+                          
+                          <!-- Single Comment Area -->
+                          <li class="single_comment_area">
+                              <!-- Comment Content -->
+                              <div class="comment-content">
+                                  <!-- Comment Meta -->
+                                  <div class="comment-meta d-flex align-items-center justify-content-between">
+                                      <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                      <a href="#" class="comment-reply btn world-btn">Reply</a>
+                                  </div>
+                                  <p>Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
+                              </div>
+                          </li>
+                          
+                      </ol>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+

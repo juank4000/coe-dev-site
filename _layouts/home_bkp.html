@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="home">  
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ page.list_title | default: "" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.posts -%}
+      <li>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }} </span>
+        {%- if post.author -%}
+          • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="post-meta" itemprop="name">{{ post.author }}</span></span>
+        {%- endif -%}
+        <!-- <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1> -->
+        <h1>
+          <!-- <a class="post-link" href="{{ post.url | relative_url }}"> -->
+            {{ post.title | escape }}
+          <!-- </a> -->
+        </h1>
+        <div class="post-content e-content" itemprop="articleBody">
+          {{ post.content }}
+        </div>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+  {%- endif -%}
+
+</div>

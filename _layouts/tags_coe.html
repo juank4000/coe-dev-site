@@ -1,0 +1,71 @@
+---
+layout: default_coe
+---
+
+  <!-- ********** Hero Area End ********** -->
+
+  <div class="main-content-wrapper section-padding-100">
+      <div class="container">
+          <div class="row justify-content-center">
+              <!-- ============= Post Content Area ============= -->
+              <div class="col-12 col-lg-8">
+                  <div class="single-blog-content mb-100">
+
+                      <!-- Post Content -->
+                      <div class="post-content">
+                          <h1>{{ page.title }}</h1>
+                          <br/>
+
+                          {{ content }}
+
+                          <!-- Post Meta -->
+                          <div class="post-meta second-part"> </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- ========== Sidebar Area ========== -->
+              <div class="col-12 col-md-8 col-lg-4">
+                  <div class="post-sidebar-area">
+
+                      <!-- Widget Area -->
+                      <div class="sidebar-widget-area">
+                          <h5 class="title">Contenido Relacionado</h5>
+                          <div class="widget-content">
+                                {% capture page_categorie %}{{ page.categories }}{% endcapture %}
+
+                                {% for post_aux in site.categories[page_categorie] %}
+
+
+                              <!-- Single Blog Post -->
+                              <div class="single-blog-post post-style-2 d-flex align-items-center widget-post">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="/coe-site/img/blog-img/b11.jpg" alt="">
+                                    </div>
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="#" class="headline">
+                                            <h5 class="mb-0">{{post_aux.title}}</h5>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                                {% if forloop.index > 4 %}
+                                    {% break %}
+                                {% endif %}
+                                {% endfor %}
+
+
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+          </div>
+      </div>
+  </div>
+
